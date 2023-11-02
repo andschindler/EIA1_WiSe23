@@ -1,0 +1,28 @@
+body {
+    background-color: azure
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    border: 2px solid black;
+    outline: #63efff solid 2px;
+    outline-style: double;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer {
+    text-align: center;
+
+}
