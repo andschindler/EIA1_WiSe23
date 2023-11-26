@@ -85,7 +85,7 @@ p {
 }
 
 /* Media Query für Bildschirmbreite <= 430 (Mobile) */
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 900) {
 
     #div1,
     #div2,
