@@ -1,20 +1,16 @@
 h1 {
+    font-size: 400%;
     text-align: center;
     color: black;
     font-style: oblique;
     font-family: Helvetica, Arial, sans-serif;
-
 }
-
 
 h2 {
     text-align: left;
     color: rgb(0, 0, 0);
     font-family: Helvetica, Arial, sans-serif;
-
 }
-
-
 
 p {
     font-size: 160%;
@@ -28,18 +24,13 @@ p {
 #div1 {
     width: 49%;
     height: 800px;
-    min-height: 200px;
     background-color: rgb(238, 238, 238);
     box-shadow: 10px 5px 5px black;
-    border-width: 10px;
-    border-color: black;
-    border-style: thick;
     float: left;
     position: relative;
     text-align: center;
     display: flex;
     flex-direction: column;
-    /* Anordnung in einer Spalte */
     justify-content: center;
     align-items: center;
 
@@ -52,13 +43,9 @@ p {
 
 #div2 {
     width: 50%;
-    height: 400px;
-    min-height: 200px;
+    height: 500px;
     background-color: rgb(238, 238, 238);
     box-shadow: 10px 5px 5px black;
-    border-width: 10px;
-    border-color: black;
-    border-style: thick;
     float: right;
     margin-bottom: 1%;
     position: relative;
@@ -67,20 +54,13 @@ p {
 
 #div3 {
     width: 50%;
-    height: 400px;
-    min-height: 200px;
+    height: 285px;
     background-color: rgb(238, 238, 238);
     box-shadow: 10px 5px 5px black;
-    border-width: 10px;
-    border-color: black;
-    border-style: thick;
     float: right;
     position: relative;
 }
 
-.clearfix {
-    clear: both;
-}
 
 /* Media Query für Bildschirmbreite <= 430 */
 @media only screen and (max-width: 430px) {
