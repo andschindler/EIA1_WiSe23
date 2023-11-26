@@ -85,7 +85,7 @@ p {
 }
 
 /* Media Query für Bildschirmbreite <= 430 (Mobile) */
-@media only screen and (max-width: 430) {
+@media only screen and (max-width: 430px) {
 
     #div1,
     #div2,
@@ -93,17 +93,9 @@ p {
         width: 100%;
         float: none;
     }
-
-    h1,
-    h2,
-    p {
-        font-size: 16px;
-        /* Reduzierung der Schriftgröße für Mobile */
-    }
 }
 
-
-/* Media Query für Bildschirmbreite >= 1280px (Desktop) */
+/* Media Query für Bildschirmbreite >= 1920px (Desktop) */
 @media only screen and (min-width: 1920px) {
 
     #div1,
