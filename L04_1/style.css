@@ -47,9 +47,7 @@ p {
 
 #div1 p {
     text-align: center;
-    /* Horizontale Zentrierung */
     margin: 0;
-    /* Entfernen des standardmäßigen Seitenrands */
 }
 
 #div2 {
@@ -84,8 +82,8 @@ p {
     clear: both;
 }
 
-/* Media Query für Bildschirmbreite <= 430 (Mobile) */
-@media only screen and (max-width: 900) {
+/* Media Query für Bildschirmbreite <= 430 */
+@media only screen and (max-width: 430px) {
 
     #div1,
     #div2,
@@ -95,7 +93,7 @@ p {
     }
 }
 
-/* Media Query für Bildschirmbreite >= 1920px (Desktop) */
+/* Media Query für Bildschirmbreite >= 1920px */
 @media only screen and (min-width: 1920px) {
 
     #div1,
@@ -108,6 +106,5 @@ p {
     h2,
     p {
         font-size: 48px;
-        /* Erhöhung der Schriftgröße für Desktop */
     }
 }
