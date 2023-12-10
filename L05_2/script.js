@@ -34,6 +34,10 @@ if (entscheidung === "party") {                                         // getDe
     } else if (trinken === "cola") {
         showAlert(texts[3]);
     }
+    else {
+        showAlert(texts[7]);                                               // bei Falscher Eingabe des Users - benutze hier statt prompt ein alert da Ich den User zu einem Refresh zwingen will - mit /n erstellt man einen Zeilenumbruch
+    }
+    
 } else if (entscheidung === "abgabe") {
     let aufgabe = getTaskDecision(texts[4]);
     if (aufgabe === "chatgpt") {
@@ -41,6 +45,9 @@ if (entscheidung === "party") {                                         // getDe
     } else if (aufgabe === "alleine") {
         showAlert(texts[6]);
     }
-} else {
-    showAlert(texts[7]);                                               // benutze hier statt prompt ein alert da Ich den User zu einem Refresh zwingen will - mit /n erstellt man einen Zeilenumbruch
+    else {
+        showAlert(texts[7]);                                               
+    }
+    
+
 }
