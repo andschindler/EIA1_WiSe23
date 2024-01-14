@@ -1,131 +1,176 @@
 document.addEventListener('keydown', handleKeyPress);
 
-
 let questions = [
-    { question: "Wer hat die Fußball-Weltmeisterschaft 2018 gewonnen?", options: ["Frankreich", "Deutschland", "Brasilien", "Spanien"], answer: 0 },
-    { question: "In welchem Land wurde der FC Barcelona gegründet?", options: ["Spanien", "Italien", "Deutschland", "Frankreich"], answer: 0 },
-    { question: "Wie viele Spieler sind auf dem Fußballfeld?", options: ["11", "9", "22", "15"], answer: 2 },
-    { question: "Welcher Spieler hält den Rekord für die meisten Tore in der Bundesliga?", options: ["Gerd Müller", "Robert Lewandowski", "Klaus Fischer", "Karl-Heinz Rummenigge"], answer: 1 },
-    { question: "Welches Land hat die meisten Weltmeisterschaften gewonnen?", options: ["Deutschland", "Brasilien", "Italien", "Argentinien"], answer: 1 },
-    { question: "In welchem Jahr fand die erste Fußball-Weltmeisterschaft statt?", options: ["1922", "1930", "1940", "1950"], answer: 1 },
-    { question: "Welches Team gewann die UEFA Champions League 2020/2021?", options: ["Real Madrid", "Manchester City", "Chelsea", "Bayern München"], answer: 2 },
-    { question: "Wer ist der Kapitän der deutschen Fußballnationalmannschaft?", options: ["Thomas Müller", "Manuel Neuer", "Joshua Kimmich", "Toni Kroos"], answer: 1 },
-    { question: "Welcher Spieler erhielt den Goldenen Schuh 2020?", options: ["Lionel Messi", "Robert Lewandowski", "Cristiano Ronaldo", "Mohamed Salah"], answer: 0 },
-    { question: "In welchem Land fand die erste Weltmeisterschaft der Frauen statt?", options: ["USA", "Deutschland", "Schweden", "China"], answer: 0 }
-  ];
-  
-  // Funktion zum Mischen der Fragen
-  function shuffleQuestions() {
-    for (let i = questions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [questions[i], questions[j]] = [questions[j], questions[i]];
-    }
+  { question: "WAS STEHT FÜR CSS?", options: ["CASCADING STYLE SHEET", "COMPUTER STYLE SYSTEM", "CODED STYLE SCRIPT", "CREATIVE STYLE SHEET"], answer: 0 },
+  { question: "WELCHE BEDEUTUNG HAT DIE ABKÜRZUNG HTML?", options: ["HYPER TEXT MARKUP LANGUAGE", "HIGH TECH MODERN LANGUAGE", "HYPERLINK AND TEXT LANGUAGE", "HARDWARE TESTING AND MARKUP LANGUAGE"], answer: 0 },
+  { question: "WAS IST DER ZWECK DER HTML <HEAD>-SEKTION IN EINEM HTML-DOKUMENT?", options: ["DEFINITION VON ÜBERSCHRIFTEN", "SPEICHERUNG VON METADATEN UND VERWEISEN", "PLATZIERUNG VON HAUPTINHALTEN DER WEBSITE", "FESTLEGUNG DER HINTERGRUNDFARBE"], answer: 1 },
+  { question: "WAS BEDEUTET JS IN BEZUG AUF PROGRAMMIERUNG?", options: ["JAVA STYLE", "JUMP START", "JAVASCRIPT", "JUST SOURCE"], answer: 2 },
+  { question: "WIE ERSTELLT MAN EINE KOMMENTARZEILE IN JAVASCRIPT?", options: ["// Kommentar", "# Kommentar", "-- Kommentar", "/* Kommentar */"], answer: 0 },
+  { question: "WIE KANN MAN IN CSS EINEN STIL FÜR ALLE <P>-ELEMENTE FESTLEGEN?", options: ["paragraph { }", "p { }", ".paragraph { }", "#paragraph { }"], answer: 1 },
+  { question: "WAS BEZEICHNET DIE ABKÜRZUNG DOM?", options: ["DOCUMENT OBJECT MODEL", "DATA OBJECT MODEL", "DESIGN OBJECT MODEL", "DIGITAL OBJECT MODEL"], answer: 0 },
+  //{ question: "WIE KANN MAN EXTERNE JS-DATEIEN IN EIN HTML-DOKUMENT EINBINDEN?", options: ["<script src='datei.js'></script>", "<javascript link='datei.js'></javascript>", "<js file='datei.js'></js>", "<link rel='script' href='datei.js'>"], answer: 0 },
+  { question: "WAS BEDEUTET DIE ABKÜRZUNG API?", options: ["APPLICATION PROGRAMMING INTERFACE", "ADVANCED PROGRAMMING INTERFACE", "APPLICATION PROCESSING INTERFACE", "ADVANCED PROCESSING INTERFACE"], answer: 0 },
+  { question: "WELCHE METHODE WIRD IN JAVASCRIPT VERWENDET, UM DEN INHALT EINES HTML-ELEMENTS ZU ÄNDERN?", options: ["alterText()", "innerHTML()", "modifyContent()", "changeContent()"], answer: 1 },
+];
+
+// Funktion zum Mischen der Fragen
+function shuffleQuestions() {
+  for (let i = questions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questions[i], questions[j]] = [questions[j], questions[i]];
   }
-  
-  // Rufe shuffleQuestions auf, um die Fragen vor dem ersten Spiel zu mischen
-  shuffleQuestions();
-  
-  let player1Score = 0;
-  let player2Score = 0;
-  let currentQuestionIndex = 0;
-  let currentPlayer = 1;
-  let buzzerClicked = false;
-  
-  function startGame() {
-    document.getElementById('startButton').disabled = true;
-    document.getElementById('resetButton').disabled = false;
-    document.getElementById('questionContainer').style.display = 'block';
-    updateScoreDisplay();
-    showQuestion();
-  }
-  
-  function updateScoreDisplay() {                               
-    document.getElementById('player1Score').textContent = player1Score;
-    document.getElementById('player2Score').textContent = player2Score;
-  }
-  
-  function showQuestion() {
+}
+
+// Rufe shuffleQuestions auf, um die Fragen vor dem ersten Spiel zu mischen
+shuffleQuestions();
+
+let player1Score = 0;
+let player2Score = 0;
+let currentQuestionIndex = 0;
+let currentPlayer = 1;
+let buzzerClicked = false;
+
+function startGame() {
+  document.getElementById('startButton').disabled = true;
+  document.getElementById('resetButton').disabled = false;
+  document.getElementById('questionContainer').style.display = 'block';
+  updateScoreDisplay();
+  showQuestion();
+}
+
+function updateScoreDisplay() {
+  document.getElementById('player1Score').textContent = player1Score;
+  document.getElementById('player2Score').textContent = player2Score;
+}
+
+function showQuestion() {
+  let currentQuestion = questions[currentQuestionIndex];
+  document.getElementById('question').textContent = currentQuestion.question;
+
+  buzzerClicked = false;
+  document.getElementById('player1Button').disabled = false;
+  document.getElementById('player2Button').disabled = false;
+
+  // Reset optionsContainer and show answer options after the buzzer is clicked
+  document.getElementById('optionsContainer').innerHTML = '';
+}
+
+function buzz(player) {
+  if (!buzzerClicked) {
+    buzzerClicked = true;
+    document.getElementById('player1Button').disabled = true;
+    document.getElementById('player2Button').disabled = true;
+
+    // Display answer options after the buzzer is clicked
     let currentQuestion = questions[currentQuestionIndex];
-    document.getElementById('question').textContent = currentQuestion.question;
-  
-    buzzerClicked = false;
-    document.getElementById('player1Button').disabled = false;
-    document.getElementById('player2Button').disabled = false;
-  
-    // Reset optionsContainer and show answer options after the buzzer is clicked
-    document.getElementById('optionsContainer').innerHTML = '';
+    let optionsHtml = currentQuestion.options.map((option, index) => {
+      return `<button onclick="checkAnswer(${index})">${option}</button>`;
+    }).join('');
+
+    document.getElementById('optionsContainer').innerHTML = optionsHtml;
   }
-  
-  function buzz(player) {
-    if (!buzzerClicked) {
-      buzzerClicked = true;
-      document.getElementById('player1Button').disabled = true;
-      document.getElementById('player2Button').disabled = true;
-  
-      // Display answer options after the buzzer is clicked
-      let currentQuestion = questions[currentQuestionIndex];
-      let optionsHtml = currentQuestion.options.map((option, index) => {
-        return `<button onclick="checkAnswer(${index})">${option}</button>`;
-      }).join('');
-      
-      document.getElementById('optionsContainer').innerHTML = optionsHtml;
-    }
-  
-    currentPlayer = player;
+
+  currentPlayer = player;
+}
+
+function checkAnswer(selectedOption) {
+  let currentQuestion = questions[currentQuestionIndex];
+  let isCorrect = selectedOption === currentQuestion.answer;
+
+  if (isCorrect) {
+    playCorrectSound();
+    alert(`Richtig! Spieler ${currentPlayer} bekommt einen Punkt.`);
+    updateScore(currentPlayer);
+  } else {
+    playWrongSound(); // Neue Funktion zum Abspielen des Sounds
+
+    alert(`Falsch! Spieler ${3 - currentPlayer} bekommt einen Punkt.`);
+    updateScore(3 - currentPlayer);
   }
-  
-  function checkAnswer(selectedOption) {
-    let currentQuestion = questions[currentQuestionIndex];
-    let isCorrect = selectedOption === currentQuestion.answer;
-  
-    if (isCorrect) {
-      alert(`Richtig! Spieler ${currentPlayer} bekommt einen Punkt.`);
-      updateScore(currentPlayer);
-    } else {
-      alert(`Falsch! Spieler ${3 - currentPlayer} bekommt einen Punkt.`);
-      updateScore(3 - currentPlayer);
-    }
-  
-    if (player1Score === 3 || player2Score === 3) {
-      endGame();
-    } else {
-      setTimeout(() => {
-        currentQuestionIndex++;
-        updateScoreDisplay();
-        showQuestion();
-      }, 2000);
-    }
+
+  if (player1Score === 3 || player2Score === 3) {
+    endGame();
+  } else {
+    let questionElement = document.getElementById('question');
+
+    setTimeout(() => {
+      questionElement.textContent = "Ready";
+      questionElement.style.color = "#F52700";
+    },);
+
+    setTimeout(() => {
+      questionElement.textContent = "Set!";
+      questionElement.style.color = "#FAF301";
+    }, 1000);
+
+    setTimeout(() => {
+      questionElement.textContent = "GO!";
+      questionElement.style.color = "#41F401";
+    }, 2000);
+
+    setTimeout(() => {
+      questionElement.textContent = "";
+      questionElement.style.color = ""; // Zurücksetzen auf die Standardfarbe
+      currentQuestionIndex++;
+      updateScoreDisplay();
+      showQuestion();
+    }, 3000);
   }
-  
-  function updateScore(player) {
-    if (player === 1) {
-      player1Score++;
-    } else {
-      player2Score++;
-    }
+}
+function playCorrectSound() {
+  // Hole das Audio-Element
+  let correctSound = document.getElementById('correctSound');
+
+  // Setze die Wiedergabeposition auf den Anfang, falls der Sound bereits gespielt wurde
+  correctSound.currentTime = 0;
+
+  // Spiele den Sound ab
+  correctSound.play();
+
+}
+
+function playWrongSound() {
+  // Hole das Audio-Element
+  let wrongSound = document.getElementById('wrongSound');
+
+  // Setze die Wiedergabeposition auf den Anfang, falls der Sound bereits gespielt wurde
+  wrongSound.currentTime = 0;
+
+
+  // Spiele den Sound ab
+  wrongSound.play();
+}
+
+
+function updateScore(player) {
+  if (player === 1) {
+    player1Score++;
+  } else {
+    player2Score++;
   }
-  
-  function endGame() {
-    alert(`Spiel beendet! Spieler ${player1Score > player2Score ? '1' : '2'} gewinnt!`);
-    resetGame();
+}
+
+function endGame() {
+  alert(`Spiel beendet! Spieler ${player1Score > player2Score ? '1' : '2'} gewinnt!`);
+  resetGame();
+}
+
+function resetGame() {
+  document.getElementById('startButton').disabled = false;
+  document.getElementById('resetButton').disabled = true;
+  document.getElementById('questionContainer').style.display = 'none';
+  player1Score = 0;
+  player2Score = 0;
+  currentQuestionIndex = 0;
+  buzzerClicked = false;
+  updateScoreDisplay();
+}
+
+function handleKeyPress(event) {
+  const key = event.key;
+  if (key === '1') {
+    buzz(1);
+  } else if (key === '0') {
+    buzz(2);
   }
-  
-  function resetGame() {
-    document.getElementById('startButton').disabled = false;
-    document.getElementById('resetButton').disabled = true;
-    document.getElementById('questionContainer').style.display = 'none';
-    player1Score = 0;
-    player2Score = 0;
-    currentQuestionIndex = 0;
-    buzzerClicked = false;
-    updateScoreDisplay();
-  }
-  
-  function handleKeyPress(event) {
-    const key = event.key;
-    if (key === '1') {
-      buzz(1);
-    } else if (key === '0') {
-      buzz(2);
-    }
-  }
+}

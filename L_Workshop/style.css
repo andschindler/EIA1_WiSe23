@@ -1,32 +1,84 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    font-family: "Libre Barcode 128 Text", system-ui;
+    background-color: #1e1e1e;
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
+#Logo {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 250px;
+    /* Ändere die Breite nach Bedarf */
+    height: auto;
+    /* Das Bild wird proportional skaliert */
+}
+
+.name {
+    position: fixed;
+    color: #fff;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    font-family: "Press Start 2P", system-ui, cursive;
+    font-size: 18px;
+}
+
+
+#questionContainer h1 {
+    font-family: "Press Start 2P", system-ui;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Hier wird der Schatten hinzugefügt */
+    color: rgb(0, 255, 0)
+}
+
 #questionContainer {
-    background-color: #fff;
+    background-color: #1e1e1e;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px auto;
     max-width: 600px;
 }
+
+.player-button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 5px #555555;
+  }
+  
+  
+  .player-button:active {
+    box-shadow: 0 2px #555555;
+    transform: translateY(4px);
+  }
+   
+
 #player2Button {
-background-color: #db3434;
-color: #fff;
-border: none;
-padding: 10px 20px;
-font-size: 16px;
-margin: 10px;
-cursor: pointer;
-border-radius: 5px;
-transition: background-color 0.3s ease;
+    font-family: "Press Start 2P", system-ui;
+
+    background-color: #db3434;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 #player1Button {
+    font-family: "Press Start 2P", system-ui;
+
     background-color: #3fdb34;
     color: #fff;
     border: none;
@@ -36,10 +88,10 @@ transition: background-color 0.3s ease;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    }
+}
 
 .game-button {
-    background-color: #717171;
+    font-family: "Press Start 2P", system-ui;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -48,15 +100,30 @@ transition: background-color 0.3s ease;
     margin-top: 20px;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: #717171;
 }
 
-.player-button:disabled, .game-button:disabled {
+.game-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.game-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+    /* Remove box-shadow on click */
+}
+
+
+.player-button:disabled,
+.game-button:disabled {
     background-color: #717171;
     cursor: not-allowed;
 }
 
-.player-button:hover, .game-button:hover {
+.player-button:hover,
+.game-button:hover {
     background-color: #979797;
 }
 
@@ -67,32 +134,40 @@ transition: background-color 0.3s ease;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #ecf0f1;
+    background-color: #1e1e1e;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    text-align: center;
+
+
 }
 
 #scoreContainer p {
-    font-size: 18px;
+    font-size: 36px;
     margin: 10px 0;
+    color: #ffffff;
+
 }
 
-#scoreContainer span  {
+#scoreContainer span {
     font-size: 36px;
     font-weight: bold;
-    color: #8fbeff;
+    color: #0dff00;
+    text-align: center;
 }
 
 #optionsContainer {
+    font-family: "Press Start 2P", system-ui;
+    color: #0dff00;
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
 #optionsContainer button {
-    background-color: #3498db;
-    color: #fff;
+    font-family: "Press Start 2P", system-ui;
+    background-color: #ffffff;
+    color: #1e1e1e;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -103,5 +178,5 @@ transition: background-color 0.3s ease;
 }
 
 #optionsContainer button:hover {
-    background-color: #2980b9;
+    background-color: #c7c7c7;
 }
