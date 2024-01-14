@@ -8,7 +8,7 @@ let questions = [
   { question: "WIE ERSTELLT MAN EINE KOMMENTARZEILE IN JAVASCRIPT?", options: ["// Kommentar", "# Kommentar", "-- Kommentar", "/* Kommentar */"], answer: 0 },
   { question: "WIE KANN MAN IN CSS EINEN STIL FÜR ALLE <P>-ELEMENTE FESTLEGEN?", options: ["paragraph { }", "p { }", ".paragraph { }", "#paragraph { }"], answer: 1 },
   { question: "WAS BEZEICHNET DIE ABKÜRZUNG DOM?", options: ["DOCUMENT OBJECT MODEL", "DATA OBJECT MODEL", "DESIGN OBJECT MODEL", "DIGITAL OBJECT MODEL"], answer: 0 },
-  //{ question: "WIE KANN MAN EXTERNE JS-DATEIEN IN EIN HTML-DOKUMENT EINBINDEN?", options: ["<script src='datei.js'></script>", "<javascript link='datei.js'></javascript>", "<js file='datei.js'></js>", "<link rel='script' href='datei.js'>"], answer: 0 },
+  // { question: "WIE KANN MAN EXTERNE JS-DATEIEN IN EIN HTML-DOKUMENT EINBINDEN?", options: ["<script src='datei.js'></script>", "<javascript link='datei.js'></javascript>", "<js file='datei.js'></js>", "<link rel='script' href='datei.js'>"], answer: 0 },
   { question: "WAS BEDEUTET DIE ABKÜRZUNG API?", options: ["APPLICATION PROGRAMMING INTERFACE", "ADVANCED PROGRAMMING INTERFACE", "APPLICATION PROCESSING INTERFACE", "ADVANCED PROCESSING INTERFACE"], answer: 0 },
   { question: "WELCHE METHODE WIRD IN JAVASCRIPT VERWENDET, UM DEN INHALT EINES HTML-ELEMENTS ZU ÄNDERN?", options: ["alterText()", "innerHTML()", "modifyContent()", "changeContent()"], answer: 1 },
 ];
