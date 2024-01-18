@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="dat.gui.min.js" defer></script>
+  <script src="eia1_voyager_sdk.js" defer></script>
   <audio id="correctSound" src="Correct_Ding.wav"></audio>
   <audio id="wrongSound" src="Incorrect Buzzer.wav"></audio>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +23,7 @@
 <body>
   <div id="questionContainer" style="display: none;">
     <h1 id="question"></h1>
+    <div id="resultContainer" class="hidden"></div>
     <button id="player1Button" class="player-button" onclick="buzz(1)">Player 1 Buzz</button>
     <button id="player2Button" class="player-button" onclick="buzz(2)">Player 2 Buzz</button>
     <div id="optionsContainer"></div>

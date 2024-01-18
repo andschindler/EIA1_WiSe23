@@ -11,9 +11,8 @@ body {
     bottom: 10px;
     right: 10px;
     width: 250px;
-    /* Ändere die Breite nach Bedarf */
-    height: auto;
-    /* Das Bild wird proportional skaliert */
+    height: auto;       /* Das Bild wird proportional skaliert */
+
 }
 
 .name {
@@ -61,6 +60,20 @@ body {
     transform: translateY(4px);
   }
    
+  #resultContainer {
+    background-color: white;
+    font-family: 'Press Start 2P', cursive;
+    padding: 80px;
+    margin-top: 50px;
+    color: black;
+    border-radius: 32px;
+    text-align: center;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
 
 #player2Button {
     font-family: "Press Start 2P", system-ui;
@@ -112,7 +125,6 @@ body {
 .game-button:active {
     transform: translateY(0);
     box-shadow: none;
-    /* Remove box-shadow on click */
 }
 
 

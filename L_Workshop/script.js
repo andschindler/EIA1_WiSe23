@@ -1,4 +1,6 @@
-document.addEventListener('keydown', handleKeyPress);
+document.addEventListener('keydown', handleKeyPress); // Eventlistener für Tastendruck (1 für Spieler 1, 0 für Spieler 2)
+
+
 
 let questions = [
   { question: "WAS STEHT FÜR CSS?", options: ["CASCADING STYLE SHEET", "COMPUTER STYLE SYSTEM", "CODED STYLE SCRIPT", "CREATIVE STYLE SHEET"], answer: 0 },
@@ -24,6 +26,7 @@ function shuffleQuestions() {
 // Rufe shuffleQuestions auf, um die Fragen vor dem ersten Spiel zu mischen
 shuffleQuestions();
 
+// Initialisierung von Spielvariablen und Scores
 let player1Score = 0;
 let player2Score = 0;
 let currentQuestionIndex = 0;
@@ -38,6 +41,7 @@ function startGame() {
   showQuestion();
 }
 
+// Funktion zur Anzeige der aktuellen Frage
 function updateScoreDisplay() {
   document.getElementById('player1Score').textContent = player1Score;
   document.getElementById('player2Score').textContent = player2Score;
@@ -61,7 +65,7 @@ function buzz(player) {
     document.getElementById('player1Button').disabled = true;
     document.getElementById('player2Button').disabled = true;
 
-    // Display answer options after the buzzer is clicked
+    // Zeige Antwortmöglichkeiten nach Betätigung des Buzzers
     let currentQuestion = questions[currentQuestionIndex];
     let optionsHtml = currentQuestion.options.map((option, index) => {
       return `<button onclick="checkAnswer(${index})">${option}</button>`;
@@ -73,52 +77,61 @@ function buzz(player) {
   currentPlayer = player;
 }
 
+function displayResult(resultText) {
+  let resultContainer = document.getElementById('resultContainer');
+  resultContainer.innerHTML = resultText;
+  resultContainer.style.display = 'block';
+
+  setTimeout(function() {
+    resultContainer.style.display = 'none';
+    
+    if (player1Score === 3 || player2Score === 3) {
+      endGame();
+    } else {
+      let questionElement = document.getElementById('question');
+
+      setTimeout(() => {
+        questionElement.textContent = "Ready";
+        questionElement.style.color = "#F52700";
+      },);
+
+      setTimeout(() => {
+        questionElement.textContent = "Set!";
+        questionElement.style.color = "#FAF301";
+      }, 1000);
+
+      setTimeout(() => {
+        questionElement.textContent = "GO!";
+        questionElement.style.color = "#41F401";
+      }, 2000);
+
+      setTimeout(() => {
+        questionElement.textContent = "";
+        questionElement.style.color = ""; // Zurücksetzen auf die Standardfarbe
+        currentQuestionIndex++;
+        updateScoreDisplay();
+        showQuestion();
+      }, 3000);
+    }
+  }, 3000);
+}
+
 function checkAnswer(selectedOption) {
   let currentQuestion = questions[currentQuestionIndex];
   let isCorrect = selectedOption === currentQuestion.answer;
 
   if (isCorrect) {
     playCorrectSound();
-    alert(`Richtig! Spieler ${currentPlayer} bekommt einen Punkt.`);
+    displayResult(`Richtig! Spieler ${currentPlayer} bekommt einen Punkt.`);
     updateScore(currentPlayer);
   } else {
-    playWrongSound(); // Neue Funktion zum Abspielen des Sounds
-
-    alert(`Falsch! Spieler ${3 - currentPlayer} bekommt einen Punkt.`);
+    playWrongSound();
+    displayResult(`Falsch! Spieler ${3 - currentPlayer} bekommt einen Punkt.`);
     updateScore(3 - currentPlayer);
   }
-
-  if (player1Score === 3 || player2Score === 3) {
-    endGame();
-  } else {
-    let questionElement = document.getElementById('question');
-
-    setTimeout(() => {
-      questionElement.textContent = "Ready";
-      questionElement.style.color = "#F52700";
-    },);
-
-    setTimeout(() => {
-      questionElement.textContent = "Set!";
-      questionElement.style.color = "#FAF301";
-    }, 1000);
-
-    setTimeout(() => {
-      questionElement.textContent = "GO!";
-      questionElement.style.color = "#41F401";
-    }, 2000);
-
-    setTimeout(() => {
-      questionElement.textContent = "";
-      questionElement.style.color = ""; // Zurücksetzen auf die Standardfarbe
-      currentQuestionIndex++;
-      updateScoreDisplay();
-      showQuestion();
-    }, 3000);
-  }
 }
+
 function playCorrectSound() {
-  // Hole das Audio-Element
   let correctSound = document.getElementById('correctSound');
 
   // Setze die Wiedergabeposition auf den Anfang, falls der Sound bereits gespielt wurde
@@ -166,11 +179,25 @@ function resetGame() {
   updateScoreDisplay();
 }
 
+
 function handleKeyPress(event) {
-  const key = event.key;
+  const key = event.key.toUpperCase();
+
   if (key === '1') {
     buzz(1);
   } else if (key === '0') {
     buzz(2);
+  } else if (['A', 'S', 'D', 'F'].includes(key)) {
+    // Wenn eine der Tasten A, S, D oder F gedrückt wird, den Index ermitteln
+    const optionIndex = ['A', 'S', 'D', 'F'].indexOf(key);
+
+    // Rufe die checkAnswer-Funktion mit dem gefundenen Index auf
+    checkAnswer(optionIndex);
   }
-}
+} 
+
+
+
+
+
+
